@@ -1,19 +1,24 @@
 import styled from 'styled-components'
 import { FilterProps } from '.'
 
-export const Card = styled.div<FilterProps>`
+type FilterStyleProps = Omit<FilterProps, 'count' | 'title'>
+
+export const Card = styled.div<FilterStyleProps>`
   padding: 0.5rem;
   border: none;
   background-color: #fcfcfc;
-  color: ${(props) => (props.active ? '#1e90ff' : '#5e5e5e')};
   border-radius: 0.5rem;
+  color: ${(props) => (props.active ? '#1e90ff' : '#5e5e5e')};
+  outline-offset: ${(props) => (props.active ? '2px' : '0')};
+  outline-width: ${(props) => (props.active ? '3px' : '0')};
+  outline-color: ${(props) => (props.active ? '#1e90ff' : '#fcfcfc')};
+  outline-style: solid;
+
   cursor: pointer;
-  outline: 1px solid ${(props) => (props.active ? '#1e90ff' : '#fcfcfc')};
   transition: all 50ms ease;
 
   &:hover {
-    outline: ${(props) =>
-      props.active ? '1px solid #1e90ff' : '3px solid #fcfcfc'};
+    outline-width: 3px;
   }
 `
 

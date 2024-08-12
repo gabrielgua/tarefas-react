@@ -1,13 +1,15 @@
 import { Card, Count, Label } from './styles'
 
 export type FilterProps = {
+  count: number
+  title: string
   active?: boolean
 }
 
-const Filter = (props: FilterProps) => (
-  <Card active={props.active}>
-    <Count>3</Count>
-    <Label>pendente</Label>
+const Filter = ({ count, title, active }: FilterProps) => (
+  <Card active={active}>
+    <Count>{count}</Count>
+    <Label>{title}</Label>
   </Card>
 )
 

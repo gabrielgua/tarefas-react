@@ -9,10 +9,11 @@ export const Aside = styled.aside`
   gap: 1rem;
 `
 
-export const Logo = styled.h1`
+export const Logo = styled.h2`
   font-weight: bold;
-  color: #1e90ff;
-  font-size: 32px;
+  font-style: italic;
+  color: #666666;
+  font-size: 26px;
   display: block;
 `
 
