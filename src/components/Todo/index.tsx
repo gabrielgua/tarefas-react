@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
+import { edit, remove } from '../../store/reducers/todos'
+import { Todo as TodoType } from '../../types/todo.type'
 import {
   TodoActions,
   TodoBtn,
@@ -11,38 +13,49 @@ import {
   TodoTag,
   TodoTitle
 } from './styles'
-import { Todo as TodoType } from '../../types/todo.type'
-import { remove } from '../../store/reducers/todos'
+import { TodoPriority, TodoStatus } from '../../types/todo.enum'
 
 const Todo = ({ id, title, status, priority, description }: TodoType) => {
   const dispatch = useDispatch()
   const [isEditing, setIsEditing] = useState(false)
+  const [desc, setDesc] = useState(description)
 
-  function edit() {
-    setIsEditing(true)
+  function save(todo: TodoType) {
+    dispatch(edit(todo))
+    setIsEditing(false)
   }
 
-  function save() {
+  function cancel() {
     setIsEditing(false)
+    setDesc(description)
   }
 
   return (
     <TodoCard>
       <TodoContent>
         <TodoTitle>{title}</TodoTitle>
-        <TodoTag priority={priority}>{priority}</TodoTag>
-        <TodoTag status={status}>{status}</TodoTag>
-        <TodoDescription value={description} />
+        <TodoTag priority={priority}>{TodoPriority[priority]}</TodoTag>
+        <TodoTag status={status}>{TodoStatus[status]}</TodoTag>
+        <TodoDescription
+          disabled={!isEditing}
+          autoFocus={isEditing}
+          value={desc}
+          onChange={(e) => setDesc(e.target.value)}
+        />
       </TodoContent>
       <TodoActions>
         {isEditing ? (
           <>
-            <TodoBtnSave onClick={save}>Salvar</TodoBtnSave>
-            <TodoBtnDanger>Cancelar</TodoBtnDanger>
+            <TodoBtnSave
+              onClick={() => save({ id, description, priority, status, title })}
+            >
+              Salvar
+            </TodoBtnSave>
+            <TodoBtnDanger onClick={cancel}>Cancelar</TodoBtnDanger>
           </>
         ) : (
           <>
-            <TodoBtn onClick={edit}>Editar</TodoBtn>
+            <TodoBtn onClick={() => setIsEditing(true)}>Editar</TodoBtn>
             <TodoBtnDanger onClick={() => dispatch(remove(id))}>
               Remover
             </TodoBtnDanger>

@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { Todo } from '../../types/todo.type'
+import { TodoPriority, TodoStatus } from '../../types/todo.enum'
 
 type TodoState = {
   items: Todo[]
@@ -11,22 +12,22 @@ const initialState: TodoState = {
       id: 1,
       title: 'Estudar Typescript',
       description: 'Assistir a aula da EBAC sobre typescrit às 19h',
-      priority: 'normal',
-      status: 'pendente'
+      priority: TodoPriority.NORMAL,
+      status: TodoStatus.PENDENTE
     },
     {
       id: 2,
       title: 'Ir pra academia',
       description: 'Hoje é treino de costas e bíceps',
-      priority: 'urgente',
-      status: 'pendente'
+      priority: TodoPriority.URGENTE,
+      status: TodoStatus.PENDENTE
     },
     {
       id: 3,
       title: 'Pagar a conta de internet',
       description: 'Baixar a fatura do gmail',
-      priority: 'importante',
-      status: 'finalizada'
+      priority: TodoPriority.IMPORTATE,
+      status: TodoStatus.FINALIZADA
     }
   ]
 }
@@ -36,10 +37,19 @@ const todosSlice = createSlice({
   initialState,
   reducers: {
     remove: (state, action: PayloadAction<number>) => {
-      state.items = state.items.filter((todo) => todo.id !== action.payload)
+      state.items = [
+        ...state.items.filter((todo) => todo.id !== action.payload)
+      ]
+    },
+    edit: (state, action: PayloadAction<Todo>) => {
+      const todo = action.payload
+      const todoIndex = state.items.findIndex((t) => t.id === todo.id)
+      if (todoIndex >= 0) {
+        state.items[todoIndex].description = todo.description
+      }
     }
   }
 })
 
-export const { remove } = todosSlice.actions
+export const { remove, edit } = todosSlice.actions
 export default todosSlice.reducer

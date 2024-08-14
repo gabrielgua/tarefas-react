@@ -1,7 +1,9 @@
+import { TodoPriority, TodoStatus } from './todo.enum'
+
 export type Todo = {
   id: number
   title: string
   description: string
-  priority: 'normal' | 'importante' | 'urgente'
-  status: 'pendente' | 'finalizada'
+  priority: TodoPriority
+  status: TodoStatus
 }
