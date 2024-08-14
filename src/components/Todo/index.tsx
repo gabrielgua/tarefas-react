@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useDispatch } from 'react-redux'
 import {
   TodoActions,
   TodoBtn,
@@ -10,15 +11,11 @@ import {
   TodoTag,
   TodoTitle
 } from './styles'
+import { Todo as TodoType } from '../../types/todo.type'
+import { remove } from '../../store/reducers/todos'
 
-type TodoProps = {
-  title: string
-  priority: string
-  status: string
-  description: string
-}
-
-const Todo = ({ title, status, priority, description }: TodoProps) => {
+const Todo = ({ id, title, status, priority, description }: TodoType) => {
+  const dispatch = useDispatch()
   const [isEditing, setIsEditing] = useState(false)
 
   function edit() {
@@ -46,7 +43,9 @@ const Todo = ({ title, status, priority, description }: TodoProps) => {
         ) : (
           <>
             <TodoBtn onClick={edit}>Editar</TodoBtn>
-            <TodoBtnDanger>Remover</TodoBtnDanger>
+            <TodoBtnDanger onClick={() => dispatch(remove(id))}>
+              Remover
+            </TodoBtnDanger>
           </>
         )}
       </TodoActions>
