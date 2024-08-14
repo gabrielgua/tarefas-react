@@ -1,9 +1,10 @@
 import styled from 'styled-components'
-import { FilterProps } from '.'
 
-type FilterStyleProps = Omit<FilterProps, 'count' | 'title'>
+type Props = {
+  active: boolean
+}
 
-export const Card = styled.div<FilterStyleProps>`
+export const Card = styled.div<Props>`
   padding: 0.5rem;
   border: none;
   background-color: #fcfcfc;

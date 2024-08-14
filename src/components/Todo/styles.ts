@@ -46,7 +46,7 @@ export const TodoTag = styled.span<TodoTagProps>`
   color: #fff;
   font-size: 10px;
   background-color: ${(props) => getTagColor(props)};
-  border-radius: 0.5rem;
+  border-radius: 1.5rem;
   margin-right: 1rem;
   max-width: max-content;
 `

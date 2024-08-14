@@ -1,16 +1,45 @@
+import { useDispatch, useSelector } from 'react-redux'
 import { Card, Count, Label } from './styles'
+import { TodoPriority, TodoStatus } from '../../types/todo.enum'
+import { editFilter } from '../../store/reducers/filter'
+import { RootReducer } from '../../store'
 
-export type FilterProps = {
-  count: number
+type FilterProps = {
   title: string
-  active?: boolean
+  type: 'status' | 'priority' | 'all'
+  value?: TodoPriority | TodoStatus
 }
 
-const Filter = ({ count, title, active }: FilterProps) => (
-  <Card active={active}>
-    <Count>{count}</Count>
-    <Label>{title}</Label>
-  </Card>
-)
+const Filter = ({ title, type, value }: FilterProps) => {
+  const dispatch = useDispatch()
+  const { filter, todos } = useSelector((state: RootReducer) => state)
+
+  function filterCriteria() {
+    dispatch(editFilter({ type, value }))
+  }
+
+  function isActive() {
+    return filter.type === type && filter.value === value
+  }
+
+  function getCount() {
+    if (type === 'priority') {
+      return todos.items.filter((t) => t.priority === value).length
+    }
+
+    if (type === 'status') {
+      return todos.items.filter((t) => t.status === value).length
+    }
+
+    return todos.items.length
+  }
+
+  return (
+    <Card active={isActive()} onClick={filterCriteria}>
+      <Count>{getCount()}</Count>
+      <Label>{title}</Label>
+    </Card>
+  )
+}
 
 export default Filter
