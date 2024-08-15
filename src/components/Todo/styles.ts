@@ -14,12 +14,12 @@ function getTagColor(props: TodoTagProps) {
   }
 
   if (props.priority) {
-    if (props.priority === TodoPriority.IMPORTATE) return vars.secondaryYellow
+    if (props.priority === TodoPriority.IMPORTANTE) return vars.secondaryYellow
     else if (props.priority === TodoPriority.URGENTE) return vars.red
-    return '#ccc'
+    return vars.gray
   }
 
-  return '#ccc'
+  return vars.gray
 }
 
 export const TodoCard = styled.div`
@@ -41,14 +41,17 @@ export const TodoTitle = styled.h3`
 `
 
 export const TodoTag = styled.span<TodoTagProps>`
+  --clr-rgb: ${(props) => getTagColor(props)};
   padding: 0.25rem 0.5rem;
   font-weight: bold;
-  color: #fff;
-  font-size: 10px;
-  background-color: ${(props) => getTagColor(props)};
-  border-radius: 1.5rem;
+  font-size: 12px;
+  background-color: rgba(var(--clr-rgb), 0.2);
+  color: rgb(var(--clr-rgb));
+  border-radius: 1rem;
   margin-right: 1rem;
   max-width: max-content;
+  outline: 2px solid rgba(var(--clr-rgb), 0.2);
+  outline-offset: 1px;
 `
 
 export const TodoDescription = styled.textarea`
@@ -79,8 +82,8 @@ export const TodoBtn = styled.button`
 `
 
 export const TodoBtnSave = styled(TodoBtn)`
-  background-color: ${vars.green};
+  background-color: rgb(${vars.green});
 `
 export const TodoBtnDanger = styled(TodoBtn)`
-  background-color: ${vars.red};
+  background-color: rgb(${vars.red});
 `

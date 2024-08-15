@@ -1,10 +1,10 @@
 export enum TodoPriority {
-  URGENTE = 1,
-  IMPORTATE = 2,
-  NORMAL = 3
+  URGENTE = 'Urgente',
+  IMPORTANTE = 'Importante',
+  NORMAL = 'Normal'
 }
 
 export enum TodoStatus {
-  FINALIZADA = 1,
-  PENDENTE = 2
+  FINALIZADA = 'Finalizada',
+  PENDENTE = 'Pendente'
 }

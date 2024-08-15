@@ -26,7 +26,7 @@ const initialState: TodoState = {
       id: 3,
       title: 'Pagar a conta de internet',
       description: 'Baixar a fatura do gmail',
-      priority: TodoPriority.IMPORTATE,
+      priority: TodoPriority.IMPORTANTE,
       status: TodoStatus.FINALIZADA
     }
   ]

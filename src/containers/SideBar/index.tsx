@@ -27,7 +27,7 @@ const SideBar = () => {
         />
         <Filter value={TodoPriority.URGENTE} type="priority" title="urgentes" />
         <Filter
-          value={TodoPriority.IMPORTATE}
+          value={TodoPriority.IMPORTANTE}
           type="priority"
           title="importantes"
         />

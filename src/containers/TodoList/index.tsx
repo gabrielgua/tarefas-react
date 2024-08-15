@@ -2,12 +2,13 @@ import { useSelector } from 'react-redux'
 import TodoComponent from '../../components/Todo'
 import { RootReducer } from '../../store'
 import {
-  ActiveFilterDescription,
+  ActiveFilterText,
+  ActiveFilterTag,
+  ActiveFilterTags,
   TodoListContainer,
   TodoListContent,
   TodoListTitle
 } from './styles'
-import { Todo } from '../../types/todo.type'
 
 const TodoList = () => {
   const todos = useSelector((state: RootReducer) => state.todos.items)
@@ -33,17 +34,25 @@ const TodoList = () => {
     return filteredTodos
   }
 
+  const filteredTodos = filterTodos()
+
   return (
     <TodoListContainer>
       <TodoListTitle>Suas tarefas</TodoListTitle>
       <TodoListContent>
-        <ActiveFilterDescription>
-          2 tarefas marcadas com
-          {filter.term?.length ? '"' + filter.term + '"' : ''}
-        </ActiveFilterDescription>
-
+        <ActiveFilterTags>
+          <ActiveFilterText>Filtros: </ActiveFilterText>
+          {filter.value && <ActiveFilterTag>{filter.value}</ActiveFilterTag>}
+          {filter.term && (
+            <ActiveFilterTag>&quot;{filter.term}&ldquo;</ActiveFilterTag>
+          )}
+          <ActiveFilterText>
+            {filteredTodos.length}{' '}
+            {filteredTodos.length === 1 ? 'tarefa' : 'tarefas'}.
+          </ActiveFilterText>
+        </ActiveFilterTags>
         <ul>
-          {filterTodos().map((todo) => (
+          {filteredTodos.map((todo) => (
             <li key={todo.id}>
               <TodoComponent
                 id={todo.id}

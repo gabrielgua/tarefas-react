@@ -13,7 +13,6 @@ import {
   TodoTag,
   TodoTitle
 } from './styles'
-import { TodoPriority, TodoStatus } from '../../types/todo.enum'
 
 const Todo = ({ id, title, status, priority, description }: TodoType) => {
   const dispatch = useDispatch()
@@ -34,8 +33,8 @@ const Todo = ({ id, title, status, priority, description }: TodoType) => {
     <TodoCard>
       <TodoContent>
         <TodoTitle>{title}</TodoTitle>
-        <TodoTag priority={priority}>{TodoPriority[priority]}</TodoTag>
-        <TodoTag status={status}>{TodoStatus[status]}</TodoTag>
+        <TodoTag priority={priority}>{priority}</TodoTag>
+        <TodoTag status={status}>{status}</TodoTag>
         <TodoDescription
           disabled={!isEditing}
           autoFocus={isEditing}
