@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 type Props = {
-  active: boolean
+  $active: boolean
 }
 
 export const Card = styled.div<Props>`
@@ -9,10 +9,10 @@ export const Card = styled.div<Props>`
   border: none;
   background-color: #fcfcfc;
   border-radius: 0.5rem;
-  color: ${(props) => (props.active ? '#1e90ff' : '#5e5e5e')};
-  outline-offset: ${(props) => (props.active ? '2px' : '0')};
-  outline-width: ${(props) => (props.active ? '3px' : '0')};
-  outline-color: ${(props) => (props.active ? '#1e90ff' : '#fcfcfc')};
+  color: ${(props) => (props.$active ? '#1e90ff' : '#5e5e5e')};
+  outline-offset: ${(props) => (props.$active ? '2px' : '0')};
+  outline-width: ${(props) => (props.$active ? '3px' : '0')};
+  outline-color: ${(props) => (props.$active ? '#1e90ff' : '#fcfcfc')};
   outline-style: solid;
 
   cursor: pointer;

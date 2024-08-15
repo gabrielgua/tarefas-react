@@ -33,8 +33,8 @@ const Todo = ({ id, title, status, priority, description }: TodoType) => {
     <TodoCard>
       <TodoContent>
         <TodoTitle>{title}</TodoTitle>
-        <TodoTag priority={priority}>{priority}</TodoTag>
-        <TodoTag status={status}>{status}</TodoTag>
+        <TodoTag $priority={priority}>{priority}</TodoTag>
+        <TodoTag $status={status}>{status}</TodoTag>
         <TodoDescription
           disabled={!isEditing}
           autoFocus={isEditing}

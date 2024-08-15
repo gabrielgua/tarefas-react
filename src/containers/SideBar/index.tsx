@@ -1,9 +1,10 @@
 import { useDispatch, useSelector } from 'react-redux'
 import Filter from '../../components/Filter'
-import { Aside, Filters, Input, Logo } from './styles'
+import { Aside, Filters, Logo } from './styles'
 import { RootReducer } from '../../store'
 import { editTerm } from '../../store/reducers/filter'
 import { TodoPriority, TodoStatus } from '../../types/todo.enum'
+import { Input } from '../../styles'
 
 const SideBar = () => {
   const dispatch = useDispatch()

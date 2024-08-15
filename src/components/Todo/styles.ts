@@ -3,19 +3,19 @@ import vars from '../../styles/vars'
 import { TodoPriority, TodoStatus } from '../../types/todo.enum'
 
 type TodoTagProps = {
-  status?: TodoStatus
-  priority?: TodoPriority
+  $status?: TodoStatus
+  $priority?: TodoPriority
 }
 
 function getTagColor(props: TodoTagProps) {
-  if (props.status) {
-    if (props.status === TodoStatus.PENDENTE) return vars.yellow
+  if (props.$status) {
+    if (props.$status === TodoStatus.PENDENTE) return vars.yellow
     return vars.green
   }
 
-  if (props.priority) {
-    if (props.priority === TodoPriority.IMPORTANTE) return vars.secondaryYellow
-    else if (props.priority === TodoPriority.URGENTE) return vars.red
+  if (props.$priority) {
+    if (props.$priority === TodoPriority.IMPORTANTE) return vars.secondaryYellow
+    else if (props.$priority === TodoPriority.URGENTE) return vars.red
     return vars.gray
   }
 

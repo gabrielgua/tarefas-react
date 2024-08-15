@@ -1,16 +1,15 @@
 import { Provider } from 'react-redux'
-import SideBar from './containers/SideBar'
-import TodoList from './containers/TodoList'
-import GlobalStyles, { Container } from './styles'
+import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom'
 import store from './store'
+import GlobalStyles, { Container } from './styles'
+import routes from './routes'
 
 function App() {
   return (
     <Provider store={store}>
       <GlobalStyles />
       <Container>
-        <SideBar />
-        <TodoList />
+        <RouterProvider router={routes} />
       </Container>
     </Provider>
   )

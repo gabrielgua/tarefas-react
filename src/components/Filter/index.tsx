@@ -12,7 +12,8 @@ type FilterProps = {
 
 const Filter = ({ title, type, value }: FilterProps) => {
   const dispatch = useDispatch()
-  const { filter, todos } = useSelector((state: RootReducer) => state)
+  const todos = useSelector((state: RootReducer) => state.todos)
+  const filter = useSelector((state: RootReducer) => state.filter)
 
   function filterCriteria() {
     dispatch(editFilter({ type, value }))
@@ -35,7 +36,7 @@ const Filter = ({ title, type, value }: FilterProps) => {
   }
 
   return (
-    <Card active={isActive()} onClick={filterCriteria}>
+    <Card $active={isActive()} onClick={filterCriteria}>
       <Count>{getCount()}</Count>
       <Label>{title}</Label>
     </Card>

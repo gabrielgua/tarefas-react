@@ -47,9 +47,12 @@ const todosSlice = createSlice({
       if (todoIndex >= 0) {
         state.items[todoIndex].description = todo.description
       }
+    },
+    save: (state, action: PayloadAction<Todo>) => {
+      state.items.push(action.payload)
     }
   }
 })
 
-export const { remove, edit } = todosSlice.actions
+export const { remove, edit, save } = todosSlice.actions
 export default todosSlice.reducer

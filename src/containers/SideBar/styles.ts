@@ -22,25 +22,3 @@ export const Filters = styled.div`
   grid-template-columns: 1fr 1fr;
   gap: 1rem;
 `
-
-export const Input = styled.input`
-  border-radius: 0.5rem;
-  padding: 0.5rem;
-  background-color: #fff;
-  font-weight: bold;
-  color: #666666;
-  outline: 1px solid #fff;
-  border: none;
-  width: 100%;
-  transition: all 50ms ease;
-
-  &:focus,
-  &:hover {
-    outline-width: 3px;
-  }
-
-  &:focus {
-    outline-offset: 2px;
-    outline-color: #666666;
-  }
-`

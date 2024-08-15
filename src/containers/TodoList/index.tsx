@@ -1,14 +1,8 @@
 import { useSelector } from 'react-redux'
 import TodoComponent from '../../components/Todo'
 import { RootReducer } from '../../store'
-import {
-  ActiveFilterText,
-  ActiveFilterTag,
-  ActiveFilterTags,
-  TodoListContainer,
-  TodoListContent,
-  TodoListTitle
-} from './styles'
+import { ContentContainer, ContentHeader, ScrollContainer } from '../../styles'
+import { ActiveFilterTag, ActiveFilterTags, ActiveFilterText } from './styles'
 
 const TodoList = () => {
   const todos = useSelector((state: RootReducer) => state.todos.items)
@@ -37,9 +31,9 @@ const TodoList = () => {
   const filteredTodos = filterTodos()
 
   return (
-    <TodoListContainer>
-      <TodoListTitle>Suas tarefas</TodoListTitle>
-      <TodoListContent>
+    <ScrollContainer>
+      <ContentHeader>Suas tarefas</ContentHeader>
+      <ContentContainer>
         <ActiveFilterTags>
           <ActiveFilterText>Filtros: </ActiveFilterText>
           {filter.value && <ActiveFilterTag>{filter.value}</ActiveFilterTag>}
@@ -64,8 +58,8 @@ const TodoList = () => {
             </li>
           ))}
         </ul>
-      </TodoListContent>
-    </TodoListContainer>
+      </ContentContainer>
+    </ScrollContainer>
   )
 }
 
