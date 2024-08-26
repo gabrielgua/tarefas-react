@@ -49,7 +49,12 @@ const todosSlice = createSlice({
       }
     },
     save: (state, action: PayloadAction<Todo>) => {
-      state.items.push(action.payload)
+      const last = state.items[state.items.length - 1]
+      const todo = {
+        ...action.payload,
+        id: last ? last.id + 1 : 1
+      }
+      state.items.push(todo)
     },
     finish: (state, action: PayloadAction<{ id: number; done: boolean }>) => {
       const todoIndex = state.items.findIndex((t) => t.id === action.payload.id)

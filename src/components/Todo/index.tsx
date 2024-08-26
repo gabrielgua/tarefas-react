@@ -46,7 +46,6 @@ const Todo = ({ id, title, status, priority, description }: TodoType) => {
           />
           <TodoTitle>
             {isEditing && <em>Editando: </em>}
-
             {title}
           </TodoTitle>
         </label>

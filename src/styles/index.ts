@@ -1,4 +1,5 @@
 import styled, { createGlobalStyle } from 'styled-components'
+import vars from './vars'
 
 const GlobalStyles = createGlobalStyle`
     * {
@@ -63,6 +64,33 @@ export const Input = styled.input<InputProps>`
     outline-offset: 2px;
     outline-color: #666666;
   }
+`
+
+export const OutlineHoverButton = styled.button`
+  transition: all 50ms ease;
+  outline-width: 0;
+  outline-color: transparent;
+  outline-offset: 0;
+  outline-style: solid;
+
+  &:hover {
+    outline: 2px solid rgb(var(--clr));
+  }
+
+  &:focus {
+    outline-offset: 2px;
+  }
+`
+export const Button = styled(OutlineHoverButton)`
+  border: none;
+  background-color: rgb(var(--clr));
+  padding: 0.5rem 0.75rem;
+  width: max-content;
+  border-radius: 0.75rem;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
 `
 
 export default GlobalStyles

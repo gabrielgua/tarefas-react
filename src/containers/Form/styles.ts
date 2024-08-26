@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import { TodoPriority } from '../../types/todo.enum'
 import vars from '../../styles/vars'
+import { Button, OutlineHoverButton } from '../../styles'
 
 type PriorityItemProps = {
   $priority: TodoPriority
@@ -83,26 +84,6 @@ export const PriorityInputRadio = styled.input`
   }
 `
 
-export const FormBtn = styled.button`
+export const FormBtn = styled(Button)`
   --clr: ${vars.green};
-  border: none;
-  background-color: rgb(var(--clr));
-  padding: 0.5rem 0.75rem;
-  width: max-content;
-  border-radius: 0.75rem;
-  margin-top: 0.5rem;
-  color: white;
-  font-size: 16px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: all 50ms ease;
-
-  &:hover {
-    outline: 2px solid rgb(var(--clr));
-    transition: all 50ms ease;
-  }
-
-  &:focus {
-    outline-offset: 2px;
-  }
 `

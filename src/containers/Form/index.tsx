@@ -52,6 +52,7 @@ const Form = () => {
             type="text"
             $secondary={true}
             placeholder="Título da tarefa"
+            required
           />
           <Input
             value={description}
@@ -59,6 +60,7 @@ const Form = () => {
             as="textarea"
             $secondary={true}
             placeholder="Descrição da tarefa"
+            required
           ></Input>
 
           <PriorityContainer>

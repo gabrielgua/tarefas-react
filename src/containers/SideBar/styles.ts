@@ -1,4 +1,6 @@
 import styled from 'styled-components'
+import { Button } from '../../styles'
+import vars from '../../styles/vars'
 
 export const Aside = styled.aside`
   padding: 1rem;
@@ -21,4 +23,10 @@ export const Filters = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1rem;
+`
+
+export const HomeButton = styled(Button)`
+  --clr: ${vars.secondaryGray};
+
+  width: 100%;
 `

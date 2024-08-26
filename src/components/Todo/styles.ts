@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import vars from '../../styles/vars'
 import { TodoPriority, TodoStatus } from '../../types/todo.enum'
+import { Button } from '../../styles'
 
 type TodoTagProps = {
   $status?: TodoStatus
@@ -75,21 +76,21 @@ export const TodoActions = styled.div`
   border-top: 1px solid rgba(0, 0, 0, 0.1);
   padding: 1rem;
 `
-export const TodoBtn = styled.button`
+export const TodoBtn = styled(Button)`
+  --clr: ${vars.secondaryGray};
   font-weight: bold;
   font-size: 12px;
   color: #fff;
   padding: 0.5rem 0.75rem;
   border: none;
   cursor: pointer;
-  background-color: #2f3640;
-  border-radius: 0.5rem;
+  border-radius: 0.75rem;
   margin-right: 1rem;
 `
 
 export const TodoBtnSave = styled(TodoBtn)`
-  background-color: rgb(${vars.green});
+  --clr: ${vars.green};
 `
 export const TodoBtnDanger = styled(TodoBtn)`
-  background-color: rgb(${vars.red});
+  --clr: ${vars.red};
 `

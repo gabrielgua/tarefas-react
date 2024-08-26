@@ -1,12 +1,11 @@
 import styled from 'styled-components'
 import vars from '../../styles/vars'
+import { Button, OutlineHoverButton } from '../../styles'
 
-export const Circle = styled.button`
-  --clr: #44bd32;
+export const Circle = styled(Button)`
+  --clr: ${vars.green};
   width: 55px;
   height: 55px;
-  background-color: var(--clr);
-  color: white;
   position: fixed;
   bottom: 40px;
   right: 40px;
@@ -14,18 +13,5 @@ export const Circle = styled.button`
   display: grid;
   place-items: center;
   font-size: 32px;
-  cursor: pointer;
-  border: none;
-  transition: all 50ms ease;
-  outline-width: 0px;
-  outline-style: solid;
-  outline-color: var(--clr);
-
-  &:hover {
-    outline-width: 3px;
-  }
-
-  &:focus {
-    outline-offset: 2px;
-  }
+  font-weight: normal;
 `
