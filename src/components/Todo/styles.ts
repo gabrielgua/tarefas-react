@@ -28,6 +28,13 @@ export const TodoCard = styled.div`
 
   border-radius: 1rem;
   margin-bottom: 1rem;
+
+  label {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
 `
 
 export const TodoContent = styled.div`
@@ -37,7 +44,6 @@ export const TodoContent = styled.div`
 export const TodoTitle = styled.h3`
   font-weight: bold;
   font-size: 18px;
-  margin-bottom: 0.5rem;
 `
 
 export const TodoTag = styled.span<TodoTagProps>`

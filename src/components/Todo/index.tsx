@@ -1,6 +1,6 @@
-import { useState } from 'react'
+import { ChangeEvent, useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { edit, remove } from '../../store/reducers/todos'
+import { edit, finish, remove } from '../../store/reducers/todos'
 import { Todo as TodoType } from '../../types/todo.type'
 import {
   TodoActions,
@@ -13,6 +13,7 @@ import {
   TodoTag,
   TodoTitle
 } from './styles'
+import { TodoStatus } from '../../types/todo.enum'
 
 const Todo = ({ id, title, status, priority, description }: TodoType) => {
   const dispatch = useDispatch()
@@ -29,10 +30,26 @@ const Todo = ({ id, title, status, priority, description }: TodoType) => {
     setDesc(description)
   }
 
+  function markAsFinished(event: ChangeEvent<HTMLInputElement>) {
+    dispatch(finish({ id, done: event.target.checked }))
+  }
+
   return (
     <TodoCard>
       <TodoContent>
-        <TodoTitle>{title}</TodoTitle>
+        <label htmlFor={title}>
+          <input
+            type="checkbox"
+            id={title}
+            onChange={markAsFinished}
+            checked={status === TodoStatus.FINALIZADA}
+          />
+          <TodoTitle>
+            {isEditing && <em>Editando: </em>}
+
+            {title}
+          </TodoTitle>
+        </label>
         <TodoTag $priority={priority}>{priority}</TodoTag>
         <TodoTag $status={status}>{status}</TodoTag>
         <TodoDescription

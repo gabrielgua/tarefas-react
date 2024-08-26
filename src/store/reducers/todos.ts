@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { Todo } from '../../types/todo.type'
 import { TodoPriority, TodoStatus } from '../../types/todo.enum'
+import { Todo } from '../../types/todo.type'
 
 type TodoState = {
   items: Todo[]
@@ -50,9 +50,17 @@ const todosSlice = createSlice({
     },
     save: (state, action: PayloadAction<Todo>) => {
       state.items.push(action.payload)
+    },
+    finish: (state, action: PayloadAction<{ id: number; done: boolean }>) => {
+      const todoIndex = state.items.findIndex((t) => t.id === action.payload.id)
+      if (todoIndex >= 0) {
+        state.items[todoIndex].status = action.payload.done
+          ? TodoStatus.FINALIZADA
+          : TodoStatus.PENDENTE
+      }
     }
   }
 })
 
-export const { remove, edit, save } = todosSlice.actions
+export const { remove, edit, save, finish } = todosSlice.actions
 export default todosSlice.reducer
